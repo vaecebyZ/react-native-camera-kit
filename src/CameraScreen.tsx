@@ -21,6 +21,7 @@ const { width, height } = Dimensions.get('window');
 type Actions = {
   leftButtonText?: string;
   leftCaptureRetakeButtonText?: string;
+  rightButtonText?: string;
 };
 
 type CameraRatioOverlay = {
@@ -33,7 +34,7 @@ type FlashImages = {
   auto: ImageSourcePropType;
 };
 
-type BottomButtonTypes = 'left' | 'capture';
+type BottomButtonTypes = 'left' | 'capture' | 'right';
 
 type BottomPressedData = {
   type: BottomButtonTypes;
@@ -146,11 +147,12 @@ export default class CameraScreen extends Component<CameraScreenProps, State> {
       this.state.flashData?.image &&
       !this.isCaptureRetakeMode() && (
         <TouchableOpacity style={{ paddingHorizontal: 15 }} onPress={() => this.onSetFlash()}>
-          <Image
+          {/* Sanka Just not Use Call error */}
+          {/* <Image
             style={[{ flex: 1, justifyContent: 'center' }, this.props.flashImageStyle]}
             source={this.state.flashData.image}
             resizeMode='contain'
-          />
+          /> */}
         </TouchableOpacity>
       )
     );
@@ -191,7 +193,8 @@ export default class CameraScreen extends Component<CameraScreenProps, State> {
     return (
       !this.props.hideControls && (
         <SafeAreaView style={styles.topButtons}>
-          {this.renderFlashButton()}
+          {/* Sanka Just not Use Call error */}
+          {/* {this.renderFlashButton()} */}
           {this.renderSwitchCameraButton()}
           {this.renderTorchButton()}
         </SafeAreaView>
@@ -288,7 +291,7 @@ export default class CameraScreen extends Component<CameraScreenProps, State> {
     }
   }
 
-  renderBottomButton(type: 'left') {
+  renderBottomButton(type: BottomButtonTypes) {
     const showButton = true;
     if (showButton) {
       const buttonNameSuffix = this.isCaptureRetakeMode() ? 'CaptureRetakeButtonText' : 'ButtonText';
@@ -307,11 +310,17 @@ export default class CameraScreen extends Component<CameraScreenProps, State> {
   }
 
   renderBottomButtons() {
+    /* Sanka Just Use more spy */
+    const { actions, hideControls } = this.props;
+
     return (
-      !this.props.hideControls && (
+      !hideControls &&
+      actions &&
+      typeof actions === 'object' && (
         <SafeAreaView style={[styles.bottomButtons, { backgroundColor: '#ffffff00' }]}>
-          {this.renderBottomButton('left')}
+          {actions.hasOwnProperty('leftButtonText') && this.renderBottomButton('left')}
           {this.renderCaptureButton()}
+          {actions.hasOwnProperty('rightButtonText') && this.renderBottomButton('right')}
         </SafeAreaView>
       )
     );

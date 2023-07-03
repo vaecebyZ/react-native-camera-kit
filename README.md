@@ -34,7 +34,7 @@
 ## Installation (RN > 0.60)
 
 ```bash
-yarn add react-native-camera-kit
+yarn add @vaecebyz/react-native-camera-kit
 ```
 
 ```bash

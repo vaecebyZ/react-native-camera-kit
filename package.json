@@ -1,15 +1,14 @@
 {
-  "name": "react-native-camera-kit",
+  "name": "@vaecebyz/react-native-camera-kit",
   "repository": {
     "type": "git",
-    "url": "https://github.com/teslamotors/react-native-camera-kit.git"
+    "url": "https://github.com/vaecebyZ/react-native-camera-kit.git"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "version": "14.0.0-beta3",
-  "description": "A high performance, fully featured, rock solid camera library for React Native applications",
-  "nativePackage": true,
+  "version": "1.0.1",
+  "description": "A high performance, fully featured, rock solid camera library for React Native applications,just Sanka use",
   "scripts": {
     "build": "tsc --project tsconfig.json",
     "clean": "rm -rf dist/",
